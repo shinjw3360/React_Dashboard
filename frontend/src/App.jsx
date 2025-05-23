@@ -4,7 +4,10 @@ import DashboardScreen from './components/dashboard/DashboardScreen';
 
 const App = () => {
   return (
-    <div className="wrapper w-screen flex items-center justify-center flex-col">
+    <div
+      className="wrapper w-screen flex items-center justify-center flex-col 
+    bg-[#212121]"
+    >
       <div className="page-wrapper min-h-screen flex w-full">
         <Sidebar />
         <div className="page-wrapper w-full">
