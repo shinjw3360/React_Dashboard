@@ -5,7 +5,7 @@
 
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 html {
   scroll-behavior: smooth;
@@ -97,3 +97,8 @@ ul {
 .custom_chart_wrap .recharts-legend-item-text {
   margin-top:0;
 }
+
+/* table product table style */
+.tbl-title {padding:0.75rem  1rem; font-size:0.875rem; border-bottom:1px solid #f0f9ff;
+  font-size:400; text-align:left;}
+.tbl-data {padding:0.75rem 1rem; font-size:0.875rem;}

@@ -4,6 +4,9 @@ import Visitors from './Visitors';
 import Revenue from './Revenue';
 import Customers from './Customers';
 import TargetReality from './TargetReality';
+import TopProducts from './TopProducts';
+import SalesMap from './SalesMap';
+import VolumeServices from './VolumeServices';
 
 const DashboardScreen = () => {
   return (
@@ -12,10 +15,13 @@ const DashboardScreen = () => {
         <Sales />
         <Visitors />
       </div>
-      <div className="area-row area-bottom lg:grid lg:grid-cols-[3fr_2fr_2fr] flex flex-wrap lg:gap-[14px] lg:mt-[14px]">
+      <div className="area-row area-bottom lg:grid lg:grid-cols-[3fr_2fr_2fr] flex flex-wrap lg:gap-[14px] lg:mt-[14px] lg:mb-[14px]">
         <Revenue />
         <Customers />
         <TargetReality />
+        <TopProducts />
+        <SalesMap />
+        <VolumeServices />
       </div>
     </div>
   );

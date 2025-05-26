@@ -18,6 +18,7 @@ const formatTooltipValue = (name, value) => {
 };
 
 const CustomTooltip = ({ payload }) => {
+  // console.log(payload);
   if (!payload || !payload.length) return null;
 
   return (
@@ -40,6 +41,9 @@ const Visitors = () => {
     dispatch(fetchVisitors());
   }, [dispatch]);
 
+  // console.log(state);
+
+  // todo: 그래프 랜더링 자연스럽게 하기
   return (
     <div className="block-wrap w-full mt-[14px] lg:mt-0">
       <HeadTitle title="Visitors Insights" />
@@ -91,7 +95,7 @@ const Visitors = () => {
               <Tooltip content={<CustomTooltip />} />
               <Legend
                 iconType="square"
-                formmater={(value) => value.replace('_', '')}
+                formatter={(value) => value.replace('_', ' ')}
               />
               <Line
                 dot={false}

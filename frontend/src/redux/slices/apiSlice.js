@@ -14,6 +14,9 @@ import {
   GET_REVENUE_API_URL,
   GET_CUSTOMERS_API_URL,
   GET_TARGET_REALITY_API_URL,
+  GET_TOP_PRODUCTS_API_URL,
+  GET_SALES_MAP_API_URL,
+  GET_VOLUME_SERVICES_API_URL,
 } from '../../constants/apiUrls';
 import { getRequest } from '../../constants/methods';
 
@@ -48,6 +51,24 @@ export const fetchTargetReality = createFetchThunk(
   GET_TARGET_REALITY_API_URL
 );
 
+// GET Top Products data
+export const fetchTopProducts = createFetchThunk(
+  'fetchTopProducts', // action type
+  GET_TOP_PRODUCTS_API_URL
+);
+
+// GET Sales Map data
+export const fetchSalesMap = createFetchThunk(
+  'fetchSalesMap', // action type
+  GET_SALES_MAP_API_URL
+);
+
+// GET Volume Services data
+export const fetchVolumeServices = createFetchThunk(
+  'fetchVolumeServices', // action type
+  GET_VOLUME_SERVICES_API_URL
+);
+
 // 요청 성공 시 함수 정의
 const handleFullfilled = (stateKey) => (state, action) => {
   state[stateKey] = action.payload; // payload는 요청 성공 시 받은 데이터
@@ -66,20 +87,38 @@ const apiSlice = createSlice({
     revenueData: null,
     customersData: null,
     targetRealityData: null,
+    topProductsData: null,
+    salesMapData: null,
+    volumeServicesData: null,
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchVisitors.fulfilled, handleFullfilled('visitorsData')) // 요청 성공 시
       .addCase(fetchVisitors.rejected, handleRejected) // 요청 실패 시
+
       .addCase(fetchRevenue.fulfilled, handleFullfilled('revenueData'))
       .addCase(fetchRevenue.rejected, handleRejected)
+
       .addCase(fetchCustomers.fulfilled, handleFullfilled('customersData'))
       .addCase(fetchCustomers.rejected, handleRejected)
+
       .addCase(
         fetchTargetReality.fulfilled,
         handleFullfilled('targetRealityData')
       )
-      .addCase(fetchTargetReality.rejected, handleRejected);
+      .addCase(fetchTargetReality.rejected, handleRejected)
+
+      .addCase(fetchTopProducts.fulfilled, handleFullfilled('topProductsData'))
+      .addCase(fetchTopProducts.rejected, handleRejected)
+
+      .addCase(fetchSalesMap.fulfilled, handleFullfilled('salesMapData'))
+      .addCase(fetchSalesMap.rejected, handleRejected)
+
+      .addCase(
+        fetchVolumeServices.fulfilled,
+        handleFullfilled('volumeServicesData')
+      )
+      .addCase(fetchVolumeServices.rejected, handleRejected);
   },
 });
 

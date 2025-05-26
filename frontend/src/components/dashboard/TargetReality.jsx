@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchTargetReality } from '../../redux/slices/apiSlice';
 import { BarChart, Bar, ResponsiveContainer, XAxis } from 'recharts';
 import { TARGET_REALITY_LISTS } from '../../constants/menuLists';
+
 const TargetReality = () => {
   const state = useSelector((state) => state.apis.targetRealityData);
   const dispatch = useDispatch();
@@ -12,11 +13,10 @@ const TargetReality = () => {
     dispatch(fetchTargetReality());
   }, [dispatch]);
 
-  console.log(state);
+  // console.log(state);
   return (
     <div className="block-wrap w-full mt-[14px] lg:mt-0">
       <HeadTitle title="Target vs Reality" />
-
       <div className="bar-chart w-full h-[180px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
@@ -60,18 +60,22 @@ const TargetReality = () => {
       <div className="block-foot">
         <div className="legend-info mt-4 flex flex-col gap-2">
           {TARGET_REALITY_LISTS.map((item, idx) => (
-            <div key={idx}>
-              <div className="info-item-left">
-                <div>
-                  <img src={item.icon} alt="" />
+            <div key={idx} className="flex items-center justify-between">
+              <div className="info-item-left flex items-center gap-2.5">
+                <div
+                  className={`info-item-icon w-10 h-10 rounded-sm flex flex-center justify-center ${
+                    idx === 0 ? 'bg-[#e2fff3]' : 'bg-[#fff4de]'
+                  }`}
+                >
+                  <img src={item.icon} alt="" className="w-6" />
                 </div>
                 <div>
-                  <h4>{item.title}</h4>
-                  <p>{item.subtitle}</p>
+                  <h4 className="text-xs text-gray-300">{item.title}</h4>
+                  <p className="text-[10px] text-gray-500">{item.subtitle}</p>
                 </div>
               </div>
               <div className="info-item-right">
-                <p>{item.value}</p>
+                <p className="font-semibold text-gray-300">{item.value}</p>
               </div>
             </div>
           ))}
